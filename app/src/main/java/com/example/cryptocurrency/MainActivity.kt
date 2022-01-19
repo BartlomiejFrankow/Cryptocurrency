@@ -28,7 +28,7 @@ class MainActivity : ComponentActivity() {
                         startDestination = Screen.CoinListScreen.route
                     ) {
                         composable(route = Screen.CoinListScreen.route) { CoinListScreen(navController = navController) }
-                        composable(route = Screen.CoinDetailsScreen.route + "/{coinId}") { CoinDetailScreen(navController = navController) }
+                        composable(route = Screen.CoinDetailsScreen.route + "/{coinId}") { CoinDetailScreen() }
                     }
                 }
             }

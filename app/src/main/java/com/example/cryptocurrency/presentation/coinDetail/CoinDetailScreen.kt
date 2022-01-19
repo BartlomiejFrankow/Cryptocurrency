@@ -17,7 +17,6 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavController
 import com.example.cryptocurrency.R
 import com.example.cryptocurrency.presentation.coinDetail.components.CoinTag
 import com.example.cryptocurrency.presentation.coinDetail.components.TeamListItem
@@ -25,7 +24,6 @@ import com.google.accompanist.flowlayout.FlowRow
 
 @Composable
 fun CoinDetailScreen(
-    navController: NavController,
     viewModel: CoinDetailViewModel = hiltViewModel()
 ) {
     val state = viewModel.state.value
