@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Cryptocurrency</string>
+    <string name="error_server_connection">Couldn\'t reach server. Please check your network connection.</string>
+    <string name="error_unexpected">An unexpected error</string>
+    <string name="active">active</string>
+    <string name="inactive">inactive</string>
+    <string name="tags">Tags</string>
+    <string name="team_members">Team members</string>
 </resources>
