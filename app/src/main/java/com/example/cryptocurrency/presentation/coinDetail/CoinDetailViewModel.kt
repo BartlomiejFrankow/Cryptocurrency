@@ -7,11 +7,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.cryptocurrency.R
 import com.example.cryptocurrency.common.Constants
-import com.example.cryptocurrency.common.Resource
+import com.example.cryptocurrency.common.RequestResult.*
 import com.example.cryptocurrency.domain.useCase.getCoin.GetCoinUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -25,17 +24,17 @@ class CoinDetailViewModel @Inject constructor(
 
     init {
         savedStateHandle.get<String>(Constants.ARG_COIN_ID)?.let {
-            getCoin(it)
+            viewModelScope.launch {
+                getCoin(it)
+            }
         }
     }
 
-    private fun getCoin(coinId: String) {
-        getCoinUseCase(coinId).onEach { result ->
-            when (result) {
-                is Resource.Error -> _state.value = CoinDetailState(error = result.errorMessage ?: R.string.error_unexpected)
-                is Resource.Loading -> _state.value = CoinDetailState(isLoading = true)
-                is Resource.Success -> _state.value = CoinDetailState(coin = result.data)
-            }
-        }.launchIn(viewModelScope)
+    private suspend fun getCoin(coinId: String) {
+        _state.value = when (val results = getCoinUseCase(coinId)) {
+            HttpException, IOException -> CoinDetailState(error = R.string.error_unexpected)
+            Loading -> CoinDetailState(isLoading = true)
+            is Success -> CoinDetailState(coin = results.body)
+        }
     }
 }
