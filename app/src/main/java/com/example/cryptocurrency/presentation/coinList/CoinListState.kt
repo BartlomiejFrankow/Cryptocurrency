@@ -1,6 +1,6 @@
 package com.example.cryptocurrency.presentation.coinList
 
-import com.example.cryptocurrency.domain.model.Coin
+import com.example.domain.model.Coin
 
 data class CoinListState(
     val isLoading: Boolean = false,

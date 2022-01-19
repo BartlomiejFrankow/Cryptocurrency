@@ -5,8 +5,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.cryptocurrency.R
-import com.example.cryptocurrency.common.RequestResult.*
-import com.example.cryptocurrency.domain.useCase.getCoins.GetCoinsUseCase
+import com.example.domain.common.RequestResult.*
+import com.example.domain.useCase.getCoins.GetCoinsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

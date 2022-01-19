@@ -6,9 +6,9 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.cryptocurrency.R
-import com.example.cryptocurrency.common.Constants
-import com.example.cryptocurrency.common.RequestResult.*
-import com.example.cryptocurrency.domain.useCase.getCoin.GetCoinUseCase
+import com.example.domain.common.Constants
+import com.example.domain.common.RequestResult.*
+import com.example.domain.useCase.getCoin.GetCoinUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

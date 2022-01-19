@@ -1,9 +1,9 @@
 package com.example.cryptocurrency.di
 
-import com.example.cryptocurrency.common.Constants
-import com.example.cryptocurrency.data.remote.CoinPaprikaApi
-import com.example.cryptocurrency.data.repository.CoinRepositoryImpl
-import com.example.cryptocurrency.domain.repository.CoinRepository
+import com.example.domain.common.Constants
+import com.example.domain.repository.CoinRepository
+import com.example.network.remote.CoinPaprikaApi
+import com.example.network.repository.CoinRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
