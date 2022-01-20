@@ -5,7 +5,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.cryptocurrency.R
+import com.example.domain.common.RequestResult
 import com.example.domain.common.RequestResult.*
+import com.example.domain.model.Coin
 import com.example.domain.useCase.getCoins.GetCoinsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -21,15 +23,18 @@ class CoinListViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            getCoins()
+            getCoins(getCoinsUseCase())
         }
     }
 
-    private suspend fun getCoins() {
-        _state.value = when (val response = getCoinsUseCase()) {
-            HttpException, IOException -> CoinListState(error = R.string.error_unexpected)
-            Loading -> CoinListState(isLoading = true)
-            is Success -> CoinListState(coins = response.body)
+    fun getCoins(response: RequestResult<List<Coin>>?) {
+        response?.let {
+            _state.value = when (response) {
+                HttpException -> CoinListState(error = R.string.error_unexpected)
+                IOException -> CoinListState(error = R.string.error_server_connection)
+                Loading -> CoinListState(isLoading = true)
+                is Success -> CoinListState(coins = response.body)
+            }
         }
     }
 }

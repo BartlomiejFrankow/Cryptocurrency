@@ -19,6 +19,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.cryptocurrency.presentation.Screen
 import com.example.cryptocurrency.presentation.coinList.components.CoinListItem
+import com.example.domain.model.Coin
 
 @Composable
 fun CoinListScreen(
@@ -30,11 +31,7 @@ fun CoinListScreen(
 
         LazyColumn(modifier = Modifier.fillMaxSize()) {
             items(state.coins) { coin ->
-                CoinListItem(
-                    coin = coin,
-                    onItemClick = {
-                        navController.navigate(Screen.CoinDetailsScreen.route + "/${coin.id}")
-                    })
+                CoinListItem(coin = coin) { goToDetailScreen(navController, coin) }
             }
         }
 
@@ -53,3 +50,5 @@ fun CoinListScreen(
         if (state.isLoading) CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
     }
 }
+
+private fun goToDetailScreen(navController: NavController, coin: Coin) = navController.navigate(Screen.CoinDetailsScreen.route + "/${coin.id}")
