@@ -5,8 +5,8 @@ Small application about crypto currencies and some details connected with them.
 - Clean architecture MVVM
 - Coroutines
 - Hilt
-- Jetpac Compose
-- Jetpac Navigation Component
+- Jetpack Compose
+- Jetpack Navigation Component
 - Kotlin Flow
 - Kotlin
 - Retrofit
