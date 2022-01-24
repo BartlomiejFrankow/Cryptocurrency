@@ -7,6 +7,5 @@ Small application about crypto currencies and some details connected with them.
 - Hilt
 - Jetpack Compose
 - Jetpack Navigation Component
-- Kotlin Flow
 - Kotlin
 - Retrofit
